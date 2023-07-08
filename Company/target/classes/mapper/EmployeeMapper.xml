@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emplyee.company.mapper.EmployeeMapper">
+
+    <!--    int updateEmployee(Employee employee);-->
+    <update id="updateEmployee">
+       update employee
+        <set>
+           address=#{address},tel=#{tel},age=#{age},username=#{username}
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+
+    <!--boolean createEmployee(Employee employee);-->
+    <update id="createEmployee">
+        update employee
+        <set>
+            username=#{username},password=#{password},sex=#{sex},age=#{age},address=#{address},tel=#{tel}
+        </set>
+        <where>
+            name=#{name}
+        </where>
+    </update>
+    
+    <!--Employee find(String name);-->
+<!--    <select id="find"-->
+    
+
+<!--    Integer updateDepartment(Employee employee);-->
+<!--    <update id="updateDepartment">-->
+<!--        <set>-->
+<!--            num=#{num},deid=#{deid}-->
+<!--        </set>-->
+<!--        <where>-->
+<!--            num in-->
+<!--        </where>-->
+<!--    </update>-->
+
+<!--    Integer del(List<Integer> ids);-->
+    <delete id="del">
+        delete from employee where id in (
+        <foreach collection="ids" item="id" separator=",">
+            #{id}
+        </foreach>
+            )
+    </delete>
+</mapper>
